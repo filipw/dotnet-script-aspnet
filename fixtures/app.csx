@@ -1,12 +1,20 @@
-﻿[Route("api/[controller]")]
-public class ValuesController : Controller
+﻿using GenFu;
+
+[Route("api/[controller]")]
+public class PersonController : Controller
 {
-    // GET api/values
     [HttpGet]
-    public IEnumerable<string> Get()
+    public Person Get()
     {
-        return new string[] { "value1", "value2" };
+        var person = A.New<Person>();
+        return person;
     }
+}
+
+public class Person
+{
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
 }
 
 Services(s => s.AddMvc());

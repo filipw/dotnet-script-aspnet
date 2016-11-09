@@ -1,6 +1,9 @@
 {
   "frameworks": {
     "netcoreapp1.0": {
+      "dependencies": {
+        "GenFu": "1.2.1"
+      }
     }
   }
 }
