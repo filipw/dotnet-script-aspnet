@@ -1,5 +1,13 @@
 # Experimental playground for Scripting ASP.NET Core apps
 
+## What is this? 
+
+Quickly hacked together at MVP Summit. The idea is, you can write an ASP.NET Core app as a script, with lowest possible ceremony, and then run them using .NET CLI.
+
+It's based on Roslyn scripting and my [dotnet-script](https://github.com/filipw/dotnet-script) project.
+
+## Getting up and running
+
 1) Create a `project.json` with your dependencies. You can reference anything that works on .NET Core. `Microsoft.AspNetCore.Server.Kestrel` and `Microsoft.AspNetCore.Mvc` are implicitly available to you. You also need to reference the `Dotnet.Script.AspNet` as a tool - as we will be using it for running the app.
 
 Sample `project.json`
