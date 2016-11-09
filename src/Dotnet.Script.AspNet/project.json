@@ -1,7 +1,25 @@
 ﻿{
-  "version": "1.0.0-*",
+  "version": "0.0.1-*",
+  "description": "Dotnet CLI tool allowing you to run C# ASP.NET Core apps as (CSX) scripts.",
+  "authors": [ "filipw" ],
+  "packOptions": {
+    "summary": "Dotnet CLI tool allowing you to run C# ASP.NET Core apps as (CSX) scripts.",
+    "owners": [ "filipw" ],
+    "title": "Dotnet.Script.AspNet",
+    "iconUrl": "https://raw.githubusercontent.com/filipw/Strathweb.TypedRouting.AspNetCore/master/strathweb.png",
+    "projectUrl": "https://github.com/filipw/dotnet-script-aspnett",
+    "licenseUrl": "https://github.com/filipw/dotnet-script-aspnet/blob/master/LICENSE",
+    "requireLicenseAcceptance": false,
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/filipw/dotnet-script-aspnet.git"
+    }
+  },
+
   "buildOptions": {
-    "emitEntryPoint": true
+    "emitEntryPoint": true,
+    "outputName": "dotnet-script-aspnet",
+    "debugType": "portable"
   },
 
   "dependencies": {
