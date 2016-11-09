@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Dotnet.Script.AspNet": {
+      "commandName": "Project",
+      "commandLineArgs": "..\\..\\fixtures\\app.csx"
+    }
+  }
+}
