@@ -5,5 +5,14 @@
         "GenFu": "1.2.1"
       }
     }
+  },
+  "tools": {
+    "Dotnet.Script.AspNet": {
+      "version": "0.0.1-beta",
+      "imports": [
+        "portable-net45+win8",
+        "dnxcore50"
+      ]
+    }
   }
 }
