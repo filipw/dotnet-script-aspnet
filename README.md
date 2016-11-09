@@ -4,7 +4,7 @@
 
 Quickly hacked together at MVP Summit. The idea is, you can write an ASP.NET Core app as a script, with lowest possible ceremony, and then run them using .NET CLI.
 
-It's based on Roslyn scripting and my [dotnet-script](https://github.com/filipw/dotnet-script) project.
+It's based on Roslyn scripting and [dotnet-script](https://github.com/filipw/dotnet-script) project.
 
 ## Getting up and running
 
