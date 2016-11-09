@@ -1,24 +1,23 @@
 ﻿using System;
 using System.Collections;
 using System.Reflection;
-using Microsoft.CodeAnalysis.Scripting;
-using Microsoft.CodeAnalysis.Scripting.Hosting;
 using System.Linq;
+using Dotnet.Script.Core;
 
 namespace Dotnet.Script.AspNet
 {
     public static class ScriptAssemblyExtensions
     {
-        public static Assembly GetScriptAssembly<TReturn>(this Script<TReturn> script, InteractiveAssemblyLoader loader)
+        public static Assembly GetScriptAssembly(this ScriptCompilationContext<object> scriptCompilationContext)
         {
             // force creation of lazy evaluator
             // this does not execute the script code but it will emit the assembly
             // and load it via InteractiveAssemblyLoader
-            var scriptDelegate = script.CreateDelegate();
+            var scriptDelegate = scriptCompilationContext.Script.CreateDelegate();
 
             // https://github.com/dotnet/roslyn/blob/version-2.0.0-beta4/src/Scripting/Core/Hosting/AssemblyLoader/InteractiveAssemblyLoader.cs#L52
-            var loadedAssembliesBySimpleNameProperty = loader.GetType().GetField("_loadedAssembliesBySimpleName", BindingFlags.NonPublic | BindingFlags.Instance);
-            var loadedAssembliesBySimpleName = loadedAssembliesBySimpleNameProperty?.GetValue(loader) as IDictionary;
+            var loadedAssembliesBySimpleNameProperty = scriptCompilationContext.Loader.GetType().GetField("_loadedAssembliesBySimpleName", BindingFlags.NonPublic | BindingFlags.Instance);
+            var loadedAssembliesBySimpleName = loadedAssembliesBySimpleNameProperty?.GetValue(scriptCompilationContext.Loader) as IDictionary;
             if (loadedAssembliesBySimpleName == null)
                 return null;
 

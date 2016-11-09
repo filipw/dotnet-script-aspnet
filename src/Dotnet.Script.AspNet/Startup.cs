@@ -6,15 +6,9 @@ using System.Text;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Scripting;
-using Microsoft.CodeAnalysis.Scripting.Hosting;
 using Microsoft.CodeAnalysis.Text;
-using Microsoft.DotNet.ProjectModel;
 using Microsoft.Extensions.DependencyInjection;
-using System.Linq;
 using Dotnet.Script.Core;
-using Microsoft.AspNetCore.Http;
 
 namespace Dotnet.Script.AspNet
 {
@@ -36,8 +30,8 @@ namespace Dotnet.Script.AspNet
 
             var result = runner.Execute<object, ScriptingHost>(context, _scriptHost).GetAwaiter().GetResult();
 
-            var compilationContext = (compiler.Context as ScriptCompilationContext<object>);
-            _scriptAssembly = compilationContext.Script.GetScriptAssembly(compilationContext.Loader);
+            var compilationContext = compiler.Context as ScriptCompilationContext<object>;
+            _scriptAssembly = compilationContext.GetScriptAssembly();
         }
 
         public void ConfigureServices(IServiceCollection services)
@@ -50,7 +44,6 @@ namespace Dotnet.Script.AspNet
             var mvcBuilder = _scriptHost.ConfigureServices?.Invoke(services)?.AddControllersAsServices();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             _scriptHost.ConfigureApp?.Invoke(app, env);
